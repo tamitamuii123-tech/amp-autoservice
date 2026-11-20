@@ -1,0 +1,21 @@
+# Pengaman: file berikut tidak boleh ikut ke repository publik
+.env
+.env.*
+*.py
+*.ps1
+*.cmd
+*.bat
+*.db
+*.sqlite*
+*.sql
+*.log
+*.bak
+*.pem
+*.key
+*.jks
+*.keystore
+tools/
+_to_delete/
+__pycache__/
+Thumbs.db
+desktop.ini

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Akun Pelanggan — AMP Auto Service</title>
+  <meta name="theme-color" content="#061C3C">
+  <link rel="icon" href="assets/brand/cvamp-mark-dark.png" type="image/png">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/portal.css">
+</head>
+<body class="portal-body">
+  <a class="skip" href="#main">Lewati ke konten</a>
+  <header class="nav" id="top">
+    <div class="nav-row">
+      <div class="nav-brands">
+        <a href="index.html" class="brand corp-brand" aria-label="Kembali ke beranda CV AMP">
+          <img src="assets/brand/cvamp-mark-light.png" alt="" width="36" height="40">
+          <span><b>CV AMP</b><small>Arshaka Mandiri Perkasa</small></span>
+        </a>
+        <span class="brand-sep" aria-hidden="true"></span>
+        <a href="index.html#automotive" class="brand-amp" aria-label="AMP Auto Service">
+          <img src="assets/amp-logo.svg" alt="AMP Auto Service" width="92" height="47">
+        </a>
+      </div>
+      <div class="portal-top">
+        <span class="api-chip" id="apiChip" title="Status koneksi"><i></i><span>Memeriksa server…</span></span>
+        <button class="icon-pill" id="bellBtn" type="button" hidden aria-label="Notifikasi">
+          <svg class="i" aria-hidden="true"><use href="#p-bell"/></svg><b id="bellCount" hidden>0</b>
+        </button>
+        <a class="btn btn-ghost nav-home" href="index.html">← Beranda</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="portal-main">
+    <!-- ============ AUTH ============ -->
+    <section class="auth-wrap" id="authView" hidden>
+      <div class="auth-card">
+        <div class="auth-side">
+          <img src="assets/amp-logo.svg" alt="AMP Auto Service" width="150" height="77">
+          <h1>Akun Pelanggan</h1>
+          <p>Satu akun yang sama dengan aplikasi Android AMP Auto Service. Data kendaraan, booking, status servis, tagihan, dan konsultasi tersimpan aman dan diproses langsung oleh bengkel.</p>
+          <ul class="checks">
+            <li>Booking langsung masuk ke sistem bengkel</li>
+            <li>Pantau status servis &amp; Work Order</li>
+            <li>Tagihan resmi &amp; unggah bukti transfer</li>
+            <li>Konsultasi dua arah dengan admin</li>
+          </ul>
+        </div>
+        <div class="auth-forms">
+          <div class="seg-tabs" role="tablist">
+            <button type="button" role="tab" class="on" data-auth="login" aria-selected="true">Masuk</button>
+            <button type="button" role="tab" data-auth="register" aria-selected="false">Daftar</button>
+          </div>
+          <form id="loginForm" class="pform" novalidate>
+            <label class="f">Email<input name="email" type="email" autocomplete="email" required maxlength="320"></label>
+            <label class="f">Password<input name="password" type="password" autocomplete="current-password" required maxlength="128"></label>
+            <label class="remember"><input type="checkbox" name="remember"> Ingat saya di perangkat ini</label>
+            <p class="form-error" role="alert" hidden></p>
+            <button class="btn btn-primary btn-lg wide-btn" type="submit">Masuk</button>
+          </form>
+          <form id="registerForm" class="pform" novalidate hidden>
+            <label class="f">Nama lengkap<input name="full_name" required maxlength="160" autocomplete="name"></label>
+            <label class="f">Email<input name="email" type="email" required maxlength="320" autocomplete="email"></label>
+            <label class="f">Nomor WhatsApp<input name="whatsapp" type="tel" required maxlength="16" inputmode="tel" placeholder="cth. 081234567890" autocomplete="tel"></label>
+            <label class="f">Password (8–128 karakter)<input name="password" type="password" required minlength="8" maxlength="128" autocomplete="new-password"></label>
+            <label class="f">Ulangi password<input name="confirm_password" type="password" required minlength="8" maxlength="128" autocomplete="new-password"></label>
+            <p class="form-error" role="alert" hidden></p>
+            <button class="btn btn-primary btn-lg wide-btn" type="submit">Buat akun</button>
+            <p class="small muted">Dengan mendaftar, data akun Anda disimpan di sistem AMP dan dapat dilihat admin bengkel untuk keperluan layanan.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ APP ============ -->
+    <section class="app-wrap" id="appView" hidden>
+      <aside class="side">
+        <div class="who">
+          <div class="avatar" id="avatar">A</div>
+          <div><b id="whoName">—</b><small id="whoEmail"></small></div>
+        </div>
+        <nav class="tabs" aria-label="Menu akun">
+          <button type="button" data-tab="home" class="on"><svg class="i"><use href="#p-home"/></svg>Ringkasan</button>
+          <button type="button" data-tab="vehicles"><svg class="i"><use href="#p-car"/></svg>Kendaraan</button>
+          <button type="button" data-tab="bookings"><svg class="i"><use href="#p-cal"/></svg>Booking &amp; Status</button>
+          <button type="button" data-tab="invoices"><svg class="i"><use href="#p-bill"/></svg>Tagihan</button>
+          <button type="button" data-tab="consult"><svg class="i"><use href="#p-chat"/></svg>Konsultasi</button>
+          <button type="button" data-tab="notifs"><svg class="i"><use href="#p-bell"/></svg>Notifikasi <b class="tab-badge" id="tabBadge" hidden></b></button>
+          <button type="button" data-tab="catalog"><svg class="i"><use href="#p-box"/></svg>Katalog</button>
+          <button type="button" data-tab="feedback"><svg class="i"><use href="#p-msg"/></svg>Saran &amp; Komplain</button>
+          <button type="button" data-tab="profile"><svg class="i"><use href="#p-user"/></svg>Profil</button>
+        </nav>
+        <button class="btn btn-ghost-dark logout" id="logoutBtn" type="button">Keluar</button>
+      </aside>
+
+      <div class="panel-area">
+        <div class="banner warn" id="verifyBanner" hidden></div>
+        <div class="banner err" id="apiBanner" hidden></div>
+
+        <!-- Ringkasan -->
+        <div class="tabpane" data-pane="home">
+          <h2 id="hello">Halo</h2>
+          <div class="stat-grid" id="statGrid"></div>
+          <h3 class="sub">Booking terakhir</h3>
+          <div id="homeLatest"></div>
+        </div>
+
+        <!-- Kendaraan -->
+        <div class="tabpane" data-pane="vehicles" hidden>
+          <div class="pane-head"><h2>Kendaraan saya</h2><button class="btn btn-primary" type="button" id="addVehicleBtn">+ Tambah kendaraan</button></div>
+          <form id="vehicleForm" class="card pform grid2" novalidate hidden>
+            <input type="hidden" name="id">
+            <h3 class="span2" id="vehicleFormTitle">Tambah kendaraan</h3>
+            <label class="f">Nomor polisi *<input name="plate" required maxlength="32" placeholder="cth. DA 1234 AB" autocapitalize="characters"></label>
+            <label class="f">Jenis *<select name="vehicle_type" required><option>Mobil</option><option>Motor</option></select></label>
+            <label class="f">Merek *<input name="brand" required maxlength="80" list="brandList" placeholder="cth. Toyota"></label>
+            <label class="f">Model *<input name="model" required maxlength="80" list="modelList" placeholder="cth. Avanza"></label>
+            <label class="f">Tahun<input name="year" type="number" min="1900" max="2100" inputmode="numeric"></label>
+            <datalist id="brandList"></datalist><datalist id="modelList"></datalist>
+            <p class="form-error span2" role="alert" hidden></p>
+            <div class="row-actions span2"><button class="btn btn-ghost-dark" type="button" data-cancel>Batal</button><button class="btn btn-primary" type="submit">Simpan</button></div>
+          </form>
+          <div id="vehicleList" class="cards"></div>
+        </div>
+
+        <!-- Booking -->
+        <div class="tabpane" data-pane="bookings" hidden>
+          <div class="pane-head"><h2>Booking servis</h2><button class="btn btn-wa" type="button" id="newBookingBtn">+ Booking baru</button></div>
+          <form id="bookingFormP" class="card pform grid2" novalidate hidden>
+            <h3 class="span2">Booking baru</h3>
+            <label class="f span2">Kendaraan *<select name="vehicle_id" required></select></label>
+            <label class="f">Kebutuhan *<select name="service" required><option value="">Pilih</option><option>Inspeksi</option><option>Perbaikan</option><option>Pemeliharaan</option><option>Penggantian</option><option>Pencucian</option></select></label>
+            <fieldset class="f seg"><legend>Metode kunjungan *</legend>
+              <label><input type="radio" name="visit_mode" value="Datang ke bengkel" checked> Datang ke bengkel</label>
+              <label><input type="radio" name="visit_mode" value="Panggilan"> Layanan panggilan</label>
+            </fieldset>
+            <label class="f">Tanggal *<input type="date" name="date" required></label>
+            <label class="f">Jam *<input type="time" name="time" required step="900"></label>
+            <p class="f-hint span2" id="pHoursHint"></p>
+            <label class="f span2" data-loc hidden>Lokasi penjemputan *<span class="loc-row"><input name="location" maxlength="160" placeholder="Alamat atau titik lokasi"><button class="btn btn-ghost-dark" type="button" id="geoBtn">Lokasi saya</button></span></label>
+            <label class="f span2">Keluhan / permintaan<textarea name="complaint" rows="3" maxlength="2000"></textarea></label>
+            <p class="form-error span2" role="alert" hidden></p>
+            <div class="row-actions span2"><button class="btn btn-ghost-dark" type="button" data-cancel>Batal</button><button class="btn btn-wa" type="submit">Kirim booking ke bengkel</button></div>
+          </form>
+          <div id="bookingList" class="cards"></div>
+        </div>
+
+        <!-- Tagihan -->
+        <div class="tabpane" data-pane="invoices" hidden>
+          <div class="pane-head"><h2>Tagihan servis</h2></div>
+          <p class="muted small">Tagihan diterbitkan dari Work Order di AMP Management System. Bukti transfer menunggu pemeriksaan kasir dan tidak otomatis melunasi tagihan.</p>
+          <p class="muted small">Garansi jasa 500 km / 14 hari untuk pekerjaan yang tercantum pada nota servis, sesuai ketentuan. <a href="index.html#garansi">Lihat ketentuan garansi</a></p>
+          <div id="invoiceList" class="cards"></div>
+        </div>
+
+        <!-- Konsultasi -->
+        <div class="tabpane" data-pane="consult" hidden>
+          <div class="pane-head"><h2>Konsultasi</h2><button class="btn btn-primary" type="button" id="newConsultBtn">+ Konsultasi baru</button></div>
+          <form id="consultForm" class="card pform" novalidate hidden>
+            <h3>Konsultasi baru</h3>
+            <label class="f">Pertanyaan / keluhan<textarea name="message" rows="4" maxlength="2000" placeholder="Jelaskan gejala kendaraan Anda"></textarea></label>
+            <label class="f">Foto (opsional, JPG/PNG — otomatis diperkecil)<input name="photo" type="file" accept="image/jpeg,image/png"></label>
+            <p class="form-error" role="alert" hidden></p>
+            <div class="row-actions"><button class="btn btn-ghost-dark" type="button" data-cancel>Batal</button><button class="btn btn-primary" type="submit">Kirim</button></div>
+          </form>
+          <div class="consult-grid">
+            <div id="consultList" class="thread-list"></div>
+            <div id="consultThread" class="thread"><p class="muted">Pilih percakapan.</p></div>
+          </div>
+        </div>
+
+        <!-- Notifikasi -->
+        <div class="tabpane" data-pane="notifs" hidden>
+          <div class="pane-head"><h2>Notifikasi</h2><button class="btn btn-ghost-dark" type="button" id="readAllBtn">Tandai semua dibaca</button></div>
+          <div id="notifList" class="notif-list"></div>
+        </div>
+
+        <!-- Katalog -->
+        <div class="tabpane" data-pane="catalog" hidden>
+          <div class="pane-head"><h2>Katalog</h2></div>
+          <div class="seg-tabs small-tabs" id="catTabs">
+            <button type="button" class="on" data-cat="parts">Sparepart</button>
+            <button type="button" data-cat="promotions">Promo</button>
+            <button type="button" data-cat="articles">Informasi Otomotif</button>
+          </div>
+          <form id="catSearch" class="cat-search"><input name="q" type="search" placeholder="Cari nama, SKU, merek, kecocokan…" maxlength="100"><button class="btn btn-primary" type="submit">Cari</button></form>
+          <div id="catList" class="cat-grid"></div>
+          <button class="btn btn-ghost-dark" type="button" id="catMore" hidden>Muat lagi</button>
+        </div>
+
+        <!-- Saran -->
+        <div class="tabpane" data-pane="feedback" hidden>
+          <div class="pane-head"><h2>Saran &amp; Komplain</h2></div>
+          <form id="feedbackForm" class="card pform grid2" novalidate>
+            <label class="f">Jenis *<select name="type"><option>Saran</option><option>Komplain</option></select></label>
+            <label class="f">Kontak balasan (opsional)<input name="contact" maxlength="100"></label>
+            <label class="f span2">Judul *<input name="subject" required maxlength="100"></label>
+            <label class="f span2">Pesan *<textarea name="message" rows="3" required maxlength="2000"></textarea></label>
+            <p class="form-error span2" role="alert" hidden></p>
+            <div class="row-actions span2"><button class="btn btn-primary" type="submit">Kirim</button></div>
+          </form>
+          <div id="feedbackList" class="cards"></div>
+        </div>
+
+        <!-- Profil -->
+        <div class="tabpane" data-pane="profile" hidden>
+          <div class="pane-head"><h2>Profil</h2></div>
+          <form id="profileForm" class="card pform grid2" novalidate>
+            <label class="f span2">Nama lengkap *<input name="full_name" required maxlength="160"></label>
+            <label class="f">Email<input name="email" disabled></label>
+            <label class="f">WhatsApp<input name="whatsapp" disabled></label>
+            <label class="f span2">Alamat<textarea name="address" rows="2" maxlength="500"></textarea></label>
+            <label class="f">Tanggal lahir<input name="birth_date" type="date"></label>
+            <p class="form-error span2" role="alert" hidden></p>
+            <p class="form-ok span2" role="status" hidden>Profil tersimpan.</p>
+            <div class="row-actions span2"><button class="btn btn-primary" type="submit">Simpan profil</button></div>
+          </form>
+          <div class="card" id="verifyCard"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast-p" id="toast" role="status" hidden></div>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="p-home" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="p-car" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M3 16v-4l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5v4h-2M5 16H3M7 16h10M3 12h18"/><circle cx="7" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+    <symbol id="p-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M8 15l2 2 4-4"/></g></symbol>
+    <symbol id="p-bill" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h3"/></g></symbol>
+    <symbol id="p-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="p-bell" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4zM10 20a2 2 0 0 0 4 0"/></symbol>
+    <symbol id="p-box" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M3 7l9-4 9 4v10l-9 4-9-4z"/><path d="M3 7l9 4 9-4M12 11v10"/></g></symbol>
+    <symbol id="p-msg" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4z"/><path d="M8 9h8M8 12h5"/></g></symbol>
+    <symbol id="p-user" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></g></symbol>
+  </svg>
+
+  <script src="data/config.js"></script>
+  <script src="js/portal.js"></script>
+</body>
+</html>
